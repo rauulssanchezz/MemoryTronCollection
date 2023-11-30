@@ -15,10 +15,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun medieval(view: View) {}
+    fun medieval(view: View) {
+        var intent=Intent(this,JuegoRaul::class.java)
+        startActivity(intent)
+    }
     fun marcianos(view: View) {
         var intent = Intent(this,InicioMiguel::class.java)
         startActivity(intent)
     }
-    fun melendi(view: View) {}
+    fun melendi(view: View) {
+        var intent=Intent(this,JuegoPablo::class.java)
+        startActivity(intent)
+    }
 }
