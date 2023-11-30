@@ -4,38 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@drawable/fondo_main"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:background="@drawable/fondo_main"
-    >
+    tools:context=".MainActivity">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="medieval"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        android:backgroundTint="@color/black"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="30dp"
-        >
+        android:backgroundTint="@color/white"
+        android:onClick="medieval"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@drawable/icono_r"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_margin="2dp"
-            />
+            android:layout_margin="3dp"
+            app:cardCornerRadius="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/icono_r"
+                android:gravity="center"
+                android:text="MemoryTron MedievalEdition"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.cardview.widget.CardView>
 
@@ -43,28 +49,35 @@
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button"
-        android:onClick="melendi"
-        app:layout_constraintBottom_toTopOf="@id/button3"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        android:backgroundTint="@color/black"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="30dp"
-        >
+        android:backgroundTint="@color/white"
+        android:onClick="melendi"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button">
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="MemoryTron MelendiEdition"
-            android:gravity="center"
-            android:background="@drawable/fondo_boton_pablo"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_margin="2dp"
-            />
+            android:layout_margin="3dp"
+            app:cardCornerRadius="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:background="@drawable/fondo_boton_pablo"
+                android:gravity="center"
+                android:text="MemoryTron MelendiEdition"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.cardview.widget.CardView>
 
@@ -72,28 +85,36 @@
         android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        android:onClick="marcianos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        android:backgroundTint="@color/black"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="30dp"
-        >
+        android:backgroundTint="@color/white"
+        android:onClick="marcianos"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button2">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        app:cardCornerRadius="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="MemoryTron PsichodelicEdition"
-            android:gravity="center"
-            android:background="@drawable/fondoboton_m"
-            android:textColor="@color/white"
-            android:textSize="20sp"
             android:layout_margin="2dp"
-            />
+            android:background="@drawable/fondoboton_m"
+            android:gravity="center"
+            android:text="MemoryTron PsichodelicEdition"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
