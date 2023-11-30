@@ -19,13 +19,13 @@ class Perdedor_Pablo : AppCompatActivity() {
 
     fun Reiniciar(view: View) {
         mediaPlayer?.stop()
-        val intent= Intent(this, Juego::class.java)
+        val intent= Intent(this, JuegoPablo::class.java)
         startActivity(intent)
     }
 
     override fun onBackPressed() {
         mediaPlayer?.stop()
-        val intent= Intent(this, Juego::class.java)
+        val intent= Intent(this, JuegoPablo::class.java)
         startActivity(intent)
     }
     override fun onStop() {
