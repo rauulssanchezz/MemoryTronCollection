@@ -91,6 +91,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pararMusica(view: View) {
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration=300
+        }.withEndAction{
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration=300
+            }
+        }
         if (musica) {
             bind.music.setImageResource(R.drawable.musica_off)
             mediaPlayer?.pause()

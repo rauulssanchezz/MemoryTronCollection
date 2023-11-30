@@ -1,5 +1,7 @@
 package com.example.memorytroncollection
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -29,8 +31,8 @@ class InicioRaul : AppCompatActivity() {
         mediaPlayer?.seekTo(900)
         mediaPlayer?.start()
         mediaPlayer?.setVolume(1.0F,1.0F)
-        Thread.sleep(250)
-        startActivity(intent)
+        animacion(view,200,200)
+        view.postDelayed({startActivity(intent)},400)
     }
 
     override fun onStop() {
@@ -43,6 +45,42 @@ class InicioRaul : AppCompatActivity() {
         super.onStart()
     }
 
+    fun animacion(view:View,tiempoX:Long,tiempoY:Long){
+        val scaleXAnimator = ObjectAnimator.ofFloat(view, View.SCALE_X, 0.9f)
+        val scaleYAnimator = ObjectAnimator.ofFloat(view, View.SCALE_Y, 0.9f)
+
+        val animatorListener = object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                val scaleXAnimatorBack = ObjectAnimator.ofFloat(view, View.SCALE_X, 1.0f)
+                val scaleYAnimatorBack = ObjectAnimator.ofFloat(view, View.SCALE_Y, 1.0f)
+
+                scaleXAnimatorBack.duration = tiempoX
+                scaleYAnimatorBack.duration = tiempoY
+                scaleXAnimatorBack.start()
+                scaleYAnimatorBack.start()
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+
+            }
+        }
+
+        scaleXAnimator.addListener(animatorListener)
+        scaleYAnimator.addListener(animatorListener)
+
+        scaleXAnimator.duration = tiempoX
+        scaleYAnimator.duration = tiempoY
+
+        scaleXAnimator.start()
+        scaleYAnimator.start()
+    }
 
     override fun onBackPressed() {
         mediaPlayer?.stop()

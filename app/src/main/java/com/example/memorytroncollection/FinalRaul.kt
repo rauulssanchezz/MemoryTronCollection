@@ -1,5 +1,7 @@
 package com.example.memorytroncollection
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.SharedPreferences
 import android.media.MediaPlayer
@@ -65,6 +67,42 @@ class FinalRaul : AppCompatActivity() {
 
 
     }
+    fun animacion(view:View,tiempoX:Long,tiempoY:Long){
+        val scaleXAnimator = ObjectAnimator.ofFloat(view, View.SCALE_X, 0.9f)
+        val scaleYAnimator = ObjectAnimator.ofFloat(view, View.SCALE_Y, 0.9f)
+
+        val animatorListener = object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                val scaleXAnimatorBack = ObjectAnimator.ofFloat(view, View.SCALE_X, 1.0f)
+                val scaleYAnimatorBack = ObjectAnimator.ofFloat(view, View.SCALE_Y, 1.0f)
+
+                scaleXAnimatorBack.duration = tiempoX
+                scaleYAnimatorBack.duration = tiempoY
+                scaleXAnimatorBack.start()
+                scaleYAnimatorBack.start()
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+
+            }
+        }
+
+        scaleXAnimator.addListener(animatorListener)
+        scaleYAnimator.addListener(animatorListener)
+
+        scaleXAnimator.duration = tiempoX
+        scaleYAnimator.duration = tiempoY
+
+        scaleXAnimator.start()
+        scaleYAnimator.start()
+    }
     override fun onBackPressed() {
         mediaPlayer?.stop()
         var intent= Intent(this,JuegoRaul::class.java)
@@ -73,9 +111,10 @@ class FinalRaul : AppCompatActivity() {
     }
 
     fun reiniciar(view: View) {
-        var intent= Intent(this,JuegoRaul::class.java)
+        var intent=Intent(this,JuegoRaul::class.java)
         mediaPlayer?.stop()
-        startActivity(intent)
+        animacion(view,200,200)
+        view.postDelayed({startActivity(intent)},400)
     }
     override fun onStop() {
         mediaPlayer?.pause()
