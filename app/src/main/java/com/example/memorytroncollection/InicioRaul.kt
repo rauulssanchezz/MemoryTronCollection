@@ -3,18 +3,22 @@ package com.example.memorytroncollection
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 
 class InicioRaul : AppCompatActivity() {
     var mediaPlayer: MediaPlayer?=null
     var musica=true
+    lateinit var sharedPreferences:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_raul)
-        musica=intent.getBooleanExtra("musica",musica)
+        sharedPreferences=PreferenceManager.getDefaultSharedPreferences(this)
+        musica=sharedPreferences.getBoolean("musica",true)
         mediaPlayer= MediaPlayer.create(this,R.raw.inicio)
         mediaPlayer?.setVolume(0.3F,0.3F)
         mediaPlayer?.start()
@@ -25,7 +29,6 @@ class InicioRaul : AppCompatActivity() {
 
     fun jugar(view: View) {
         val intent= Intent(this,JuegoRaul::class.java)
-        intent.putExtra("musica",musica)
         mediaPlayer?.stop()
         mediaPlayer= MediaPlayer.create(this,R.raw.boton)
         mediaPlayer?.seekTo(900)

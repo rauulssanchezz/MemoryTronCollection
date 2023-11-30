@@ -14,14 +14,19 @@ class MainActivity : AppCompatActivity() {
     lateinit var bind:ActivityMainBinding
     var mediaPlayer:MediaPlayer?=null
     var musica=true
+    lateinit var sharedPreferences:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind=ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        musica = sharedPreferences.getBoolean("musica", true)
         mediaPlayer=MediaPlayer.create(this,R.raw.main_song)
         mediaPlayer?.start()
         mediaPlayer?.isLooping=true
-
+        if (!musica){
+            mediaPlayer?.pause()
+        }
     }
 
     fun medieval(view: View) {
@@ -30,16 +35,16 @@ class MainActivity : AppCompatActivity() {
         view.animate().apply {
             scaleX(0.9f)
             scaleY(0.9f)
-            duration=300
+            duration=200
         }.withEndAction{
             view.animate().apply {
                 scaleX(1.0f)
                 scaleY(1.0f)
-                duration=300
+                duration=200
             }
         }
-        intent.putExtra("musica",musica)
-        startActivity(intent)
+        view.postDelayed({startActivity(intent)},600)
+
 
     }
     fun marcianos(view: View) {
@@ -48,15 +53,15 @@ class MainActivity : AppCompatActivity() {
         view.animate().apply {
             scaleX(0.9f)
             scaleY(0.9f)
-            duration=300
+            duration=200
         }.withEndAction{
             view.animate().apply {
                 scaleX(1.0f)
                 scaleY(1.0f)
-                duration=300
+                duration=200
             }
         }
-        startActivity(intent)
+        view.postDelayed({startActivity(intent)},600)
     }
     fun melendi(view: View) {
         mediaPlayer?.stop()
@@ -64,15 +69,15 @@ class MainActivity : AppCompatActivity() {
         view.animate().apply {
             scaleX(0.9f)
             scaleY(0.9f)
-            duration=300
+            duration=200
         }.withEndAction{
             view.animate().apply {
                 scaleX(1.0f)
                 scaleY(1.0f)
-                duration=300
+                duration=200
             }
         }
-        startActivity(intent)
+        view.postDelayed({startActivity(intent)},600)
     }
 
     override fun onStop() {
@@ -86,7 +91,6 @@ class MainActivity : AppCompatActivity() {
         }else{
             bind.music.setImageDrawable(getDrawable(R.drawable.musica_off))
         }
-
         super.onStart()
     }
 
@@ -106,11 +110,19 @@ class MainActivity : AppCompatActivity() {
             bind.music.setImageResource(R.drawable.musica_off)
             mediaPlayer?.pause()
             musica=false
+            sharedPreferences.edit().apply {
+                putBoolean("musica",musica)
+                apply()
+            }
 
         }else{
             bind.music.setImageResource(R.drawable.musica_on)
             mediaPlayer?.start()
             musica=true
+            sharedPreferences.edit().apply {
+                putBoolean("musica",musica)
+                apply()
+            }
         }
     }
 }

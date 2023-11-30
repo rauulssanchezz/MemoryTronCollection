@@ -15,5 +15,6 @@
     <string name="texto_boton">Reiniciar</string>
     <integer name="victoriasRaul">0</integer>
     <integer name="derrotasRaul">0</integer>
+    <bool name="musica">true</bool>
 
 </resources>

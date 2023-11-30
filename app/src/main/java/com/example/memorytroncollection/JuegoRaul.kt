@@ -3,9 +3,11 @@ package com.example.memorytroncollection
 import android.animation.ObjectAnimator
 import android.animation.Animator
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +27,7 @@ class JuegoRaul : AppCompatActivity() {
     var gana = 0
     var vidas = 4
     var mediaPlayer: MediaPlayer? = null
-
+    lateinit var sharedPreferences:SharedPreferences
     // Utiliza CountDownLatch para la sincronización
     private val latch = CountDownLatch(1)
 
@@ -63,7 +65,8 @@ class JuegoRaul : AppCompatActivity() {
             findViewById<ImageView>(R.id.ct3img4)
         )
 
-        musica = intent.getBooleanExtra("musica", musica)
+        sharedPreferences=PreferenceManager.getDefaultSharedPreferences(this)
+        musica = sharedPreferences.getBoolean("musica",true)
         mediaPlayer = MediaPlayer.create(this, R.raw.juego)
         mediaPlayer?.setVolume(0.5F, 0.5F)
         mediaPlayer?.start()

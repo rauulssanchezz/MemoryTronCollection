@@ -59,7 +59,7 @@ class FinalRaul : AppCompatActivity() {
         }
         resultados.text = "Victorias Totales: $victorias\nDerrotas Totales: $derrotas"
 
-        musica=intent.getBooleanExtra("musica",musica)
+        musica=sharedPreferences.getBoolean("musica",true)
 
         if(!musica) {
             mediaPlayer?.stop()
