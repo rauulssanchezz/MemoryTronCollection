@@ -42,4 +42,9 @@ class InicioMiguel : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        var intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
+    }
 }
