@@ -21,13 +21,13 @@
             android:id="@+id/cora_m1"
             android:layout_width="@dimen/heart_size"
             android:layout_height="@dimen/heart_size"
-            android:src="@drawable/cora_m_m"
+            android:src="@drawable/cora_m"
             android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cora_m2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_margin="@dimen/margen_cora_mzones"
+            android:layout_margin="@dimen/margen_corazones"
             />
 
         <ImageView
@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cora_m3"
-            android:layout_margin="@dimen/margen_cora_mzones"
+            android:layout_margin="@dimen/margen_corazones"
             />
 
         <ImageView

@@ -15,8 +15,7 @@ import androidx.core.os.postDelayed
 import com.example.memorytroncollection.databinding.ActivityJuegoMiguelBinding
 import kotlinx.coroutines.sync.Semaphore
 
-
-class Juego : AppCompatActivity() {
+class JuegoMiguel : AppCompatActivity() {
     //    Musica
     private var musicaR: MediaPlayer? = null
     private var musicaChampion: MediaPlayer? = null
