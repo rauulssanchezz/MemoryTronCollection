@@ -42,15 +42,10 @@
             android:layout_height="match_parent"
             android:layout_margin="3dp"
             app:cardCornerRadius="20dp">
-
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/icono_r"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
+                android:background="@drawable/icono_r" />
         </androidx.cardview.widget.CardView>
 
 

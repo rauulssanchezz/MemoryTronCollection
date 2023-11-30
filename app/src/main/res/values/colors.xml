@@ -14,4 +14,5 @@
     <color name="blackTransparente">#9C000000</color>
     <color name="blancotrans">#6DFCF7F7</color>
     <color name="red">#F44336</color>
+    <color name="fulltransparente">#00F8F3F2</color>
 </resources>
