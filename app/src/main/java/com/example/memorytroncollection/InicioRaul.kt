@@ -48,4 +48,10 @@ class InicioRaul : AppCompatActivity() {
             musica=true
         }
     }
+    override fun onBackPressed() {
+        mediaPlayer?.stop()
+        var intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
+    }
 }

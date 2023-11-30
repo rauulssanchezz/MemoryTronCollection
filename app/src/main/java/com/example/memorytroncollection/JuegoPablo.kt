@@ -137,7 +137,7 @@ class JuegoPablo : AppCompatActivity() {
     }
     override fun onBackPressed() {
         mediaPlayer?.stop()
-        val intent= Intent(this, MainActivity::class.java)
+        val intent= Intent(this, InicioPablo::class.java)
         startActivity(intent)
     }
     override fun onStop() {

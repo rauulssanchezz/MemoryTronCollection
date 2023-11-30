@@ -271,7 +271,7 @@ class JuegoRaul : AppCompatActivity() {
 
         override fun onBackPressed() {
             mediaPlayer?.stop()
-            var intent = Intent(this, MainActivity::class.java)
+            var intent = Intent(this, InicioRaul::class.java)
             startActivity(intent)
             super.onBackPressed()
         }

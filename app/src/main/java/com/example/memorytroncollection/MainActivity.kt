@@ -1,6 +1,7 @@
 package com.example.memorytroncollection
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,11 +9,14 @@ import com.example.memorytroncollection.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var bind:ActivityMainBinding
+    var mediaPlayer:MediaPlayer?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind=ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
-
+        mediaPlayer=MediaPlayer.create(this,R.raw.main_song)
+        mediaPlayer?.start()
+        mediaPlayer?.isLooping=true
     }
 
     fun medieval(view: View) {
@@ -60,5 +64,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
         startActivity(intent)
+    }
+
+    override fun onStop() {
+        mediaPlayer?.pause()
+        super.onStop()
+    }
+
+    override fun onStart() {
+        mediaPlayer?.start()
+        super.onStart()
     }
 }
