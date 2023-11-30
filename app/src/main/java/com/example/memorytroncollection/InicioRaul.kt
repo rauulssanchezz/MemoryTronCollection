@@ -12,6 +12,7 @@ class InicioRaul : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_raul)
+        musica=intent.getBooleanExtra("musica",musica)
         mediaPlayer= MediaPlayer.create(this,R.raw.inicio)
         mediaPlayer?.setVolume(0.3F,0.3F)
         mediaPlayer?.start()

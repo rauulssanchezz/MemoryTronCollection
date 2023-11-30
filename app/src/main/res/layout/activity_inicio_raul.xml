@@ -22,12 +22,4 @@
         android:backgroundTint="@color/trasparente"
         />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Música"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="pararMusica"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
