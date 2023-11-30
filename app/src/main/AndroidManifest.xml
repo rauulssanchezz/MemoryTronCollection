@@ -19,6 +19,18 @@
             android:name=".JuegoRaul"
             android:exported="false" />
         <activity
+            android:name=".Perdedor_Pablo"
+            android:exported="false" />
+        <activity
+            android:name=".Ganador_Pablo"
+            android:exported="false" />
+        <activity
+            android:name=".JuegoPablo"
+            android:exported="false" />
+        <activity
+            android:name=".InicioPablo"
+            android:exported="false" />
+        <activity
             android:name=".InicioRaul"
             android:exported="false" />
         <activity
@@ -37,5 +49,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
