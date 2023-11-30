@@ -10,6 +10,7 @@ import com.example.memorytroncollection.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     lateinit var bind:ActivityMainBinding
     var mediaPlayer:MediaPlayer?=null
+    var musica=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind=ActivityMainBinding.inflate(layoutInflater)
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 duration=300
             }
         }
+        intent.putExtra("musica",musica)
         startActivity(intent)
 
     }
@@ -77,5 +79,15 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         mediaPlayer?.start()
         super.onStart()
+    }
+
+    fun pararMusica(view: View) {
+        if (musica) {
+            mediaPlayer?.pause()
+            musica=false
+        }else{
+            mediaPlayer?.start()
+            musica=true
+        }
     }
 }

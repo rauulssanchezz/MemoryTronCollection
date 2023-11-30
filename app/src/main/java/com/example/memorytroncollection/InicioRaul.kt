@@ -15,6 +15,9 @@ class InicioRaul : AppCompatActivity() {
         mediaPlayer= MediaPlayer.create(this,R.raw.inicio)
         mediaPlayer?.setVolume(0.3F,0.3F)
         mediaPlayer?.start()
+        if (!musica) {
+            mediaPlayer?.stop()
+        }
     }
 
     fun jugar(view: View) {
@@ -39,15 +42,7 @@ class InicioRaul : AppCompatActivity() {
         super.onStart()
     }
 
-    fun pararMusica(view: View) {
-        if (musica) {
-            mediaPlayer?.pause()
-            musica=false
-        }else{
-            mediaPlayer?.start()
-            musica=true
-        }
-    }
+
     override fun onBackPressed() {
         mediaPlayer?.stop()
         var intent = Intent(this, MainActivity::class.java)
