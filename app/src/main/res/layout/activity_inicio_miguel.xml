@@ -31,22 +31,40 @@
         android:elevation="10dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/white2"
+        android:orientation="vertical"
         >
 
-        <TextView
-            android:id="@+id/explicacion"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/explicacion"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/explicacion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/explicacion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¡No pulsar repetidamente!"
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/explicacion"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </androidx.cardview.widget.CardView>
 
@@ -60,7 +78,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/white"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        />
 
     <Button
         android:id="@+id/jugar2"
@@ -73,13 +92,14 @@
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        />
 
     <ImageView
         android:id="@+id/baraja"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:srcCompat="@drawable/trasera_m"
+        app:srcCompat="@drawable/baraja_m"
         app:layout_constraintTop_toBottomOf="@+id/jugar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:adjustViewBounds="true"
@@ -87,7 +107,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/trasera_m"
         android:scaleType="centerCrop"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

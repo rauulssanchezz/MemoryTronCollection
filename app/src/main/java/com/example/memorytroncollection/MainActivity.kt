@@ -81,7 +81,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        mediaPlayer?.start()
+        if (musica){
+            mediaPlayer?.start()
+        }else{
+            bind.music.setImageDrawable(getDrawable(R.drawable.musica_off))
+        }
+
         super.onStart()
     }
 
