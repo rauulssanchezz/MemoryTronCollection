@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InicioRaul"
-    android:background="@drawable/inicioR">
+    android:background="@drawable/inicio_r">
 
     <Button
         android:id="@+id/jugar"
