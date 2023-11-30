@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer=MediaPlayer.create(this,R.raw.main_song)
         mediaPlayer?.start()
         mediaPlayer?.isLooping=true
+
     }
 
     fun medieval(view: View) {
@@ -86,10 +87,12 @@ class MainActivity : AppCompatActivity() {
 
     fun pararMusica(view: View) {
         if (musica) {
+            bind.music.setImageResource(R.drawable.musica_off)
             mediaPlayer?.pause()
             musica=false
 
         }else{
+            bind.music.setImageResource(R.drawable.musica_on)
             mediaPlayer?.start()
             musica=true
         }
