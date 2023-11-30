@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun medieval(view: View) {
+        mediaPlayer?.stop()
         var intent=Intent(this,InicioRaul::class.java)
         view.animate().apply {
             scaleX(0.9f)
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun marcianos(view: View) {
+        mediaPlayer?.stop()
         var intent = Intent(this,InicioMiguel::class.java)
         view.animate().apply {
             scaleX(0.9f)
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun melendi(view: View) {
+        mediaPlayer?.stop()
         var intent=Intent(this,InicioPablo::class.java)
         view.animate().apply {
             scaleX(0.9f)
