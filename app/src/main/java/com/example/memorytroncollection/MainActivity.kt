@@ -17,14 +17,48 @@ class MainActivity : AppCompatActivity() {
 
     fun medieval(view: View) {
         var intent=Intent(this,InicioRaul::class.java)
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration=300
+        }.withEndAction{
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration=300
+            }
+        }
         startActivity(intent)
+
     }
     fun marcianos(view: View) {
         var intent = Intent(this,InicioMiguel::class.java)
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration=300
+        }.withEndAction{
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration=300
+            }
+        }
         startActivity(intent)
     }
     fun melendi(view: View) {
         var intent=Intent(this,InicioPablo::class.java)
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration=300
+        }.withEndAction{
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration=300
+            }
+        }
         startActivity(intent)
     }
 }
