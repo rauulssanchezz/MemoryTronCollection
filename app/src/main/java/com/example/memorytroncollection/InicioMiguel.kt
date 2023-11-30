@@ -31,6 +31,9 @@ class InicioMiguel : AppCompatActivity() {
         bind.card.setOnClickListener {
             cont ++
             if (cont > 5){
+                bind.explicacion.setBackgroundResource(R.drawable.fondoboton_m)
+                bind.explicacion.setTextColor(getColor(R.color.yellow))
+                bind.adv.visibility = View.GONE
                 bind.jugar.visibility = View.INVISIBLE
                 bind.jugar2.visibility = View.VISIBLE
                 bind.t.text = getString(R.string.msj_bienvenidaR)
