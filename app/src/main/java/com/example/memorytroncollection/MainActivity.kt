@@ -1,5 +1,6 @@
 package com.example.memorytroncollection
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun medieval(view: View) {}
-    fun marcianos(view: View) {}
+    fun marcianos(view: View) {
+        var intent = Intent(this,JuegoMiguel::class.java)
+        startActivity(intent)
+    }
     fun melendi(view: View) {}
 }
