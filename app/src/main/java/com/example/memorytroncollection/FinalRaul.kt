@@ -24,8 +24,8 @@ class FinalRaul : AppCompatActivity() {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // Recupera las victorias y derrotas almacenadas en SharedPreferences
-        var victorias = sharedPreferences.getInt("victorias", 0)
-        var derrotas = sharedPreferences.getInt("derrotas", 0)
+        var victorias = sharedPreferences.getInt("victoriasRaul", 0)
+        var derrotas = sharedPreferences.getInt("derrotasRaul", 0)
 
         var resultado = intent.getStringExtra("resultado").toString()
 
@@ -51,8 +51,8 @@ class FinalRaul : AppCompatActivity() {
             derrotas++
         }
         with(sharedPreferences.edit()) {
-            putInt("victorias", victorias)
-            putInt("derrotas", derrotas)
+            putInt("victoriasRaul", victorias)
+            putInt("derrotasRaul", derrotas)
             apply()
         }
         resultados.text = "Victorias Totales: $victorias\nDerrotas Totales: $derrotas"

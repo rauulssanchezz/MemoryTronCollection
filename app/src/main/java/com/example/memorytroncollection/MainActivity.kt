@@ -1,10 +1,13 @@
 package com.example.memorytroncollection
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
+import android.widget.Switch
 import com.example.memorytroncollection.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         if (musica) {
             mediaPlayer?.pause()
             musica=false
+
         }else{
             mediaPlayer?.start()
             musica=true
