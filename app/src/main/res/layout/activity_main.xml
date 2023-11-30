@@ -6,34 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MemoryTron MedievalEdition"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="medieval"
         app:layout_constraintBottom_toTopOf="@+id/button2"
-        />
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        >
 
-    <Button
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="MemoryTron MedievalEdition"
+            android:gravity="center"
+            android:background="@drawable/icono_r"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MemoryTron MelendiEdition"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
         android:onClick="melendi"
-        />
+        app:layout_constraintBottom_toTopOf="@id/button3"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="MemoryTron MelendiEdition"
+            android:gravity="center"
+            android:background="@drawable/fondoboton_m"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="d0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button2"
