@@ -6,4 +6,9 @@
     <color name="black2">#2E2E2E</color>
     <color name="white2">#DFDFDF</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="verde">#BBA96A</color>
+    <color name="muro">#C9AB81</color>
+    <color name="trasparente">#B7C2A387</color>
+    <color name="marron">#C46A3724</color>
+    <color name="gris">#B90E0C0C</color>
 </resources>
