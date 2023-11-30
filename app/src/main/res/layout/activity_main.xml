@@ -30,7 +30,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="MemoryTron MedievalEdition"
             android:gravity="center"
             android:background="@drawable/icono_r"
             android:textColor="@color/white"
