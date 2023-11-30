@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/fondo_main">
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    >
 
 
     <androidx.cardview.widget.CardView
@@ -58,7 +60,7 @@
             android:layout_height="match_parent"
             android:text="MemoryTron MelendiEdition"
             android:gravity="center"
-            android:background="@drawable/fondoboton_m"
+            android:background="@drawable/fondo_boton_pablo"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_margin="2dp"
