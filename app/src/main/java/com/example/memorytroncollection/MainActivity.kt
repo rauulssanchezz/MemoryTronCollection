@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun medieval(view: View) {
-        var intent=Intent(this,JuegoRaul::class.java)
+        var intent=Intent(this,InicioRaul::class.java)
         startActivity(intent)
     }
     fun marcianos(view: View) {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun melendi(view: View) {
-        var intent=Intent(this,JuegoPablo::class.java)
+        var intent=Intent(this,InicioPablo::class.java)
         startActivity(intent)
     }
 }

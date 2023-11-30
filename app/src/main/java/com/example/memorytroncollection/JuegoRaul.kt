@@ -137,7 +137,7 @@ class JuegoRaul : AppCompatActivity() {
                         imagen.setImageResource(R.drawable.vidamns_r)
                         Thread.sleep(300)
                         var resultado = "Cagaste"
-
+                        newActivity(resultado)
                     }
                 }
             } else {
