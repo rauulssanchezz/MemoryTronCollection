@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         musica = sharedPreferences.getBoolean("musica", true)
         mediaPlayer=MediaPlayer.create(this,R.raw.main_song)
+        mediaPlayer?.setVolume(0.8F,0.8F)
         mediaPlayer?.start()
         mediaPlayer?.isLooping=true
         if (!musica){
