@@ -17,10 +17,11 @@ import kotlinx.coroutines.sync.Semaphore
 
 class JuegoMiguel : AppCompatActivity() {
     //    Musica
-    private var musicaR: MediaPlayer? = null
+    private var musica: MediaPlayer? = null
     private var musicaChampion: MediaPlayer? = null
     private var sonidogracioso: MediaPlayer? = null
     private var giroR: MediaPlayer? = null
+    private var musicaBoolean = true
 
     //    Binding
     private lateinit var bind: ActivityJuegoMiguelBinding
@@ -76,9 +77,10 @@ class JuegoMiguel : AppCompatActivity() {
             )
 
             //Inicio la musica rusa
-            musicaR = MediaPlayer.create(this, R.raw.tripaloski)
-            musicaR?.start()
-            giroR = MediaPlayer.create(this,R.raw.giror)
+            musica = MediaPlayer.create(this, R.raw.tripaloski)
+            musica?.start()
+            giroR = MediaPlayer.create(this, R.raw.giror)
+            bind.music.visibility = View.GONE
             //Pongo fondo ruso
             bind.juego.setBackgroundResource(R.drawable.tripaloski_m)
             //Pongo textos en ruso
@@ -102,6 +104,11 @@ class JuegoMiguel : AppCompatActivity() {
                 R.drawable.carta5_m,
                 R.drawable.carta6_m
             )
+
+            //Inicio la musica
+            musica = MediaPlayer.create(this, R.raw.wade)
+            musica?.setVolume(0.8F,0.8F)
+            musica?.start()
         }
 
         //Desordeno las cartas
@@ -119,13 +126,11 @@ class JuegoMiguel : AppCompatActivity() {
         }
 
 
-
-
     }
 
     //Override para cuando estas en segundo plano
     override fun onStop() {
-        musicaR?.pause()
+        musica?.pause()
         musicaChampion?.pause()
         sonidogracioso?.pause()
         super.onStop()
@@ -133,17 +138,16 @@ class JuegoMiguel : AppCompatActivity() {
 
     //Override para cuando vuelves a la app
     override fun onResume() {
-        if (oculto){
-            musicaR?.start()
-        }
+
+        musica?.start()
+
         super.onResume()
     }
 
 
-
     //Override para cuando retrocedes
     override fun onBackPressed() {
-        musicaR?.stop()
+        musica?.stop()
         musicaChampion?.stop()
         sonidogracioso?.stop()
         super.onBackPressed()
@@ -215,11 +219,10 @@ class JuegoMiguel : AppCompatActivity() {
             bind.restart.visibility = View.VISIBLE
             //Paro el cronometro
             bind.chronometer.stop()
-
+            musica?.stop()
             //Compruebo el modo
-            if (oculto){
+            if (oculto) {
                 //Inicio la musica
-                musicaR?.stop()
                 sonidogracioso = MediaPlayer.create(this, R.raw.sonidogracioso)
                 sonidogracioso!!.start()
             }
@@ -257,7 +260,7 @@ class JuegoMiguel : AppCompatActivity() {
 
     //Funcion para mostrar la carta
     private fun mostrar(i: ImageView?, r: Int) {
-        if (oculto){
+        if (oculto) {
             giroR?.start()
         }
 
@@ -285,25 +288,50 @@ class JuegoMiguel : AppCompatActivity() {
 
             bind.textView.text = getString(R.string.victoria) + "\n" + tiempo
 
-            musicaR?.stop()
-            musicaR?.release()
+            musica?.stop()
+            musica?.release()
 
             musicaChampion = MediaPlayer.create(this, R.raw.campeon)
             musicaChampion!!.start()
         }
     }
 
-    fun animacion(view:View,tiempoX:Long,tiempoY:Long){
+    private fun animacion(view: View, tiempoX: Long, tiempoY: Long) {
         view.animate().apply {
             scaleX(0.9f)
             scaleY(0.9f)
-            duration=tiempoX
+            duration = tiempoX
         }.withEndAction {
             view.animate().apply {
                 scaleX(1.0f)
                 scaleY(1.0f)
-                duration=tiempoY
+                duration = tiempoY
             }
+        }
+    }
+
+    fun pararMusica(view: View) {
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration = 300
+        }.withEndAction {
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration = 300
+            }
+        }
+        if (musicaBoolean) {
+            bind.music.setImageResource(R.drawable.musica_off_dark)
+            musica?.pause()
+            musicaBoolean = false
+
+        } else {
+            bind.music.setImageResource(R.drawable.musica_on_dark)
+            musica?.start()
+            musicaBoolean = true
+
         }
     }
 
@@ -315,7 +343,7 @@ class JuegoMiguel : AppCompatActivity() {
                 when (view.id) {
                     R.id.c1 -> {
                         if (!volteada[0]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c1
                                 indice1 = 0
@@ -358,7 +386,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c2 -> {
                         if (!volteada[1]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c2
                                 indice1 = 1
@@ -399,7 +427,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c3 -> {
                         if (!volteada[2]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c3
                                 indice1 = 2
@@ -440,7 +468,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c4 -> {
                         if (!volteada[3]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c4
                                 indice1 = 3
@@ -482,7 +510,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c5 -> {
                         if (!volteada[4]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c5
                                 indice1 = 4
@@ -523,7 +551,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c6 -> {
                         if (!volteada[5]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c6
                                 indice1 = 5
@@ -562,7 +590,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c7 -> {
                         if (!volteada[6]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c7
                                 indice1 = 6
@@ -601,7 +629,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c8 -> {
                         if (!volteada[7]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c8
                                 indice1 = 7
@@ -639,7 +667,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c9 -> {
                         if (!volteada[8]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c9
                                 indice1 = 8
@@ -678,7 +706,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c10 -> {
                         if (!volteada[9]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c10
                                 indice1 = 9
@@ -716,7 +744,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c11 -> {
                         if (!volteada[10]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c11
                                 indice1 = 10
@@ -755,7 +783,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c12 -> {
                         if (!volteada[11]) {
-                            animacion(view,150,100)
+                            animacion(view, 150, 100)
                             if (primero) {
                                 vista1 = bind.c12
                                 indice1 = 11
