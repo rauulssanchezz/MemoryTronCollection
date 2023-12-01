@@ -295,6 +295,20 @@ class JuegoMiguel : AppCompatActivity() {
         }
     }
 
+    fun animacion(view:View,tiempoX:Long,tiempoY:Long){
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration=tiempoX
+        }.withEndAction {
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration=tiempoY
+            }
+        }
+    }
+
     //Funcion para cada vez que se pincha una carta
     fun click(view: View) {
 
@@ -303,7 +317,7 @@ class JuegoMiguel : AppCompatActivity() {
                 when (view.id) {
                     R.id.c1 -> {
                         if (!volteada[0]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c1
                                 indice1 = 0
@@ -346,7 +360,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c2 -> {
                         if (!volteada[1]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c2
                                 indice1 = 1
@@ -387,7 +401,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c3 -> {
                         if (!volteada[2]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c3
                                 indice1 = 2
@@ -428,7 +442,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c4 -> {
                         if (!volteada[3]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c4
                                 indice1 = 3
@@ -470,7 +484,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c5 -> {
                         if (!volteada[4]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c5
                                 indice1 = 4
@@ -511,7 +525,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c6 -> {
                         if (!volteada[5]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c6
                                 indice1 = 5
@@ -550,7 +564,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c7 -> {
                         if (!volteada[6]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c7
                                 indice1 = 6
@@ -589,7 +603,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c8 -> {
                         if (!volteada[7]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c8
                                 indice1 = 7
@@ -627,7 +641,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c9 -> {
                         if (!volteada[8]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c9
                                 indice1 = 8
@@ -666,7 +680,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c10 -> {
                         if (!volteada[9]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c10
                                 indice1 = 9
@@ -704,7 +718,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c11 -> {
                         if (!volteada[10]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c11
                                 indice1 = 10
@@ -743,7 +757,7 @@ class JuegoMiguel : AppCompatActivity() {
 
                     R.id.c12 -> {
                         if (!volteada[11]) {
-
+                            animacion(view,150,100)
                             if (primero) {
                                 vista1 = bind.c12
                                 indice1 = 11
