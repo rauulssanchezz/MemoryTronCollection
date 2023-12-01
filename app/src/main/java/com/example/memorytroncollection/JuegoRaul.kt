@@ -238,40 +238,17 @@ class JuegoRaul : AppCompatActivity() {
 
     //La animacion no se que mas quieres si se llama asi la funcion
     fun animacion(view:View,tiempoX:Long,tiempoY:Long){
-        val scaleXAnimator = ObjectAnimator.ofFloat(view, View.SCALE_X, 0.9f)
-        val scaleYAnimator = ObjectAnimator.ofFloat(view, View.SCALE_Y, 0.9f)
-
-        val animatorListener = object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator) {
-            }
-
-            override fun onAnimationEnd(animation: Animator) {
-                val scaleXAnimatorBack = ObjectAnimator.ofFloat(view, View.SCALE_X, 1.0f)
-                val scaleYAnimatorBack = ObjectAnimator.ofFloat(view, View.SCALE_Y, 1.0f)
-
-                scaleXAnimatorBack.duration = tiempoX
-                scaleYAnimatorBack.duration = tiempoY
-                scaleXAnimatorBack.start()
-                scaleYAnimatorBack.start()
-            }
-
-            override fun onAnimationCancel(animation: Animator) {
-
-            }
-
-            override fun onAnimationRepeat(animation: Animator) {
-
+        view.animate().apply {
+            scaleX(0.9f)
+            scaleY(0.9f)
+            duration=tiempoX
+        }.withEndAction {
+            view.animate().apply {
+                scaleX(1.0f)
+                scaleY(1.0f)
+                duration=tiempoY
             }
         }
-
-        scaleXAnimator.addListener(animatorListener)
-        scaleYAnimator.addListener(animatorListener)
-
-        scaleXAnimator.duration = tiempoX
-        scaleYAnimator.duration = tiempoY
-
-        scaleXAnimator.start()
-        scaleYAnimator.start()
     }
 
     fun accion(pos: Int, view: View) {
