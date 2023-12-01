@@ -157,15 +157,19 @@ class JuegoRaul : AppCompatActivity() {
                 vidas--
                 if (vidas == 3) {
                     var imagen = findViewById<ImageView>(R.id.vida4)
+                    animacion(imagen,50,150)
                     imagen.setImageResource(R.drawable.vidamns_r)
                 } else if (vidas == 2) {
                     var imagen = findViewById<ImageView>(R.id.vida3)
+                    animacion(imagen,50,150)
                     imagen.setImageResource(R.drawable.vidamns_r)
                 } else if (vidas == 1) {
                     var imagen = findViewById<ImageView>(R.id.vida2)
+                    animacion(imagen,50,150)
                     imagen.setImageResource(R.drawable.vidamns_r)
                 } else if (vidas == 0) {
                     var imagen = findViewById<ImageView>(R.id.vida1)
+                    animacion(imagen,50,150)
                     imagen.setImageResource(R.drawable.vidamns_r)
                     Thread.sleep(300)
                     var resultado = "Cagaste"
