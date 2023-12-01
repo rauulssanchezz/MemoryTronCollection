@@ -107,7 +107,6 @@ class JuegoRaul : AppCompatActivity() {
 
     fun primeraparte(pos: Int) {
         // Configura la primera parte del juego al hacer clic en una imagen
-
         if (cont<2) {
             imageViews[pos].setImageResource(imgs[pos])
             pulsados[pos] = true
@@ -118,7 +117,6 @@ class JuegoRaul : AppCompatActivity() {
                 primerclick = true
             }
         }
-
     }
 
     //La segunda parte donde se compara si las imagenes son iguales o no teniendo en cuenta si es la primera foto que se pulsa o no
