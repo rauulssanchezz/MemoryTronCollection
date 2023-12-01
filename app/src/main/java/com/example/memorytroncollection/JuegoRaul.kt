@@ -7,6 +7,8 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.preference.PreferenceManager
 import android.view.View
 import android.widget.ImageView
@@ -20,20 +22,23 @@ class JuegoRaul : AppCompatActivity() {
     var ultimg: ImageView? = null
     var primerclick = false
     lateinit var imageViews: MutableList<ImageView>
-    var pulsado: MutableList<Boolean> = MutableList(12) { false }
+    var pulsados: MutableList<Boolean> = MutableList(12) { false }
     var posant: Int? = null
     var cont = 0
-    var semaforo = Semaphore(1)
     var gana = 0
     var vidas = 4
     var mediaPlayer: MediaPlayer? = null
     lateinit var sharedPreferences:SharedPreferences
-    // Utiliza CountDownLatch para la sincronización
-    private val latch = CountDownLatch(1)
+    lateinit var  handler :Handler
+    lateinit var semaforo:Semaphore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego_raul)
+
+        handler=Handler(Looper.getMainLooper())
+        semaforo=Semaphore(1)
+
 
         imgs = mutableListOf(
             R.drawable.carta1_r,
@@ -102,36 +107,36 @@ class JuegoRaul : AppCompatActivity() {
 
     fun primeraparte(pos: Int) {
         // Configura la primera parte del juego al hacer clic en una imagen
-        imageViews[pos].setImageResource(imgs[pos])
-        pulsado[pos] = true
-        cont++
-        if (ultimg == null) {
-            primerclick = false
-        } else {
-            primerclick = true
+
+        if (cont<2) {
+            imageViews[pos].setImageResource(imgs[pos])
+            pulsados[pos] = true
+            cont++
+            if (ultimg == null) {
+                primerclick = false
+            } else {
+                primerclick = true
+            }
         }
+
     }
 
     //La segunda parte donde se compara si las imagenes son iguales o no teniendo en cuenta si es la primera foto que se pulsa o no
     fun segundaparte(pos: Int) {
-        if (primerclick) {
-            Thread(Runnable {
-                val iguales = comprobar(imageViews[pos], ultimg!!)
-                runOnUiThread {
-                    procesarResultado(pos, iguales)
-                }
-            }).start()
+        semaforo.acquire()
+        if (primerclick && cont==2) {
+            val iguales = comprobar(imageViews[pos], ultimg!!)
+            procesarResultado(pos, iguales)
         } else {
             ultimg = imageViews[pos]
             posant = pos
         }
+        semaforo.release()
     }
 
 
     //funcion que compara  que dependiendo si las imagenes son iguales o no responde lo que toque
     private fun procesarResultado(pos: Int, iguales: Boolean) {
-        try {
-            semaforo.acquire()
 
             if (iguales) {
                 ultimg = null
@@ -146,8 +151,8 @@ class JuegoRaul : AppCompatActivity() {
                 Thread.sleep(500)
                 imageViews[pos].setImageResource(R.drawable.parteatras_r)
                 ultimg!!.setImageResource(R.drawable.parteatras_r)
-                pulsado[pos] = false
-                pulsado[posant!!] = false
+                pulsados[pos] = false
+                pulsados[posant!!] = false
                 ultimg = null
                 posant = null
                 cont = 0
@@ -169,10 +174,7 @@ class JuegoRaul : AppCompatActivity() {
                     newActivity(resultado)
                 }
             }
-        } finally {
-            semaforo.release()
         }
-    }
 
     // Funcion onClick puesta en el xml
 
@@ -268,13 +270,17 @@ class JuegoRaul : AppCompatActivity() {
         scaleYAnimator.start()
     }
 
-    //funcion que ejecuta la animación de las cartas y ejecuta la primera y segunda parte si ya ya
-    // lo se, la animacion obviamente he mirao como hacerla con chatgpt pero le da el toque no me jodas
     fun accion(pos: Int, view: View) {
-        if (!pulsado[pos]) {
+        if (!pulsados[pos]) {
             animacion(imageViews[pos],150,100)
-            primeraparte(pos)
-            view.postDelayed({ segundaparte(pos) }, 0)
+            Thread{
+                semaforo.acquire()
+                primeraparte(pos)
+                handler.post {
+                    semaforo.release()
+                    segundaparte(pos)
+                }
+            }.start()
         }
     }
 
