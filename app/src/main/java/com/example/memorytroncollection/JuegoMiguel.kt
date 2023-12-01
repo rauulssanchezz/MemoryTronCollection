@@ -114,9 +114,7 @@ class JuegoMiguel : AppCompatActivity() {
         bind.restart.setOnClickListener {
             //Paro todas las canciones
             musicaChampion?.stop()
-            musicaChampion?.release()
             sonidogracioso?.stop()
-            sonidogracioso?.release()
             recreate()
         }
 
