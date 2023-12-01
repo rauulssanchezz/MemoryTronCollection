@@ -146,7 +146,9 @@ class JuegoRaul : AppCompatActivity() {
                     newActivity(resultado)
                 }
             } else if (cont == 2) {
-                Thread.sleep(500)
+                Thread.sleep(400)
+                animacion(imageViews[pos],100,150)
+                animacion(imageViews[posant!!],100,150)
                 imageViews[pos].setImageResource(R.drawable.parteatras_r)
                 ultimg!!.setImageResource(R.drawable.parteatras_r)
                 pulsados[pos] = false
@@ -273,17 +275,19 @@ class JuegoRaul : AppCompatActivity() {
     }
 
     fun accion(pos: Int, view: View) {
-        if (!pulsados[pos]) {
-            animacion(imageViews[pos],150,100)
-            Thread{
-                semaforo.acquire()
-                primeraparte(pos)
-                handler.post {
-                    semaforo.release()
-                    segundaparte(pos)
-                }
-            }.start()
-        }
+        animacion(imageViews[pos],150,100)
+        view.postDelayed({
+            if (!pulsados[pos]) {
+                Thread{
+                    semaforo.acquire()
+                    primeraparte(pos)
+                    handler.post {
+                        semaforo.release()
+                        segundaparte(pos)
+                    }
+                }.start()
+            }
+        },250)
     }
 
     // funcion para pasar al resultado final
