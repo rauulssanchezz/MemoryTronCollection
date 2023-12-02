@@ -68,4 +68,15 @@ class InicioRaul : AppCompatActivity() {
         startActivity(intent)
         super.onBackPressed()
     }
+    fun jugar2(view: View) {
+        val intent = Intent(this, Juego2Raul::class.java)
+        intent.putExtra("musica", musica)
+        mediaPlayer?.stop()
+        mediaPlayer = MediaPlayer.create(this, R.raw.boton)
+        mediaPlayer?.seekTo(900)
+        mediaPlayer?.start()
+        mediaPlayer?.setVolume(1.0F, 1.0F)
+        animacion(view, 200, 200)
+        view.postDelayed({ startActivity(intent) }, 400)
+    }
 }

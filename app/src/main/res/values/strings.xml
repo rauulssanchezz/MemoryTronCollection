@@ -13,8 +13,10 @@
     <string name="victoria">Felicidades campeon, ¡tienes una memoria prodijiosa!. Has ganado en </string>
     <string name="victoriaR">Поздравляем чемпиона, у тебя потрясающая память! Вы выиграли в</string>
     <string name="texto_boton">Reiniciar</string>
-    <integer name="victoriasRaul">0</integer>
-    <integer name="derrotasRaul">0</integer>
+    <integer name="victoriasRN">0</integer>
+    <integer name="derrotasRN">0</integer>
+    <integer name="victoriasRD">0</integer>
+    <integer name="derrotasRD">0</integer>
     <bool name="musica">true</bool>
 
 </resources>

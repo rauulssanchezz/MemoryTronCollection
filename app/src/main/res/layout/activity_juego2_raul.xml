@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JuegoRaul"
-    android:background="@drawable/juego_r">
-
+    tools:context=".Juego2Raul"
+    android:background="@drawable/mar">
     <LinearLayout
         android:id="@+id/vidas"
         android:layout_width="match_parent"
@@ -59,10 +58,18 @@
             android:src="@drawable/vida"
             android:adjustViewBounds="true"
             />
+        <ImageView
+            android:id="@+id/vida6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/vida"
+            android:adjustViewBounds="true"
+            />
         <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="6"
             />
     </LinearLayout>
     <LinearLayout
@@ -234,7 +241,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/contenedor2"
-        app:layout_constraintBottom_toTopOf="@id/reiniciar"
+        app:layout_constraintBottom_toTopOf="@id/contenedor4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -312,13 +319,96 @@
                 android:adjustViewBounds="true" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/contenedor4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/contenedor3"
+        app:layout_constraintBottom_toTopOf="@id/reiniciar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/fulltransparente"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ImageView
+                android:id="@+id/ct4img1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/parteatras_r"
+                android:onClick="pulsado"
+                android:adjustViewBounds="true" />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/fulltransparente"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ImageView
+                android:id="@+id/ct4img2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/parteatras_r"
+                android:onClick="pulsado"
+                android:adjustViewBounds="true" />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/fulltransparente"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ImageView
+                android:id="@+id/ct4img3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/parteatras_r"
+                android:onClick="pulsado"
+                android:adjustViewBounds="true" />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/fulltransparente"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ImageView
+                android:id="@+id/ct4img4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/parteatras_r"
+                android:onClick="pulsado"
+                android:adjustViewBounds="true" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/reiniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/marron"
+        android:backgroundTint="@color/mar"
         android:text="REINICIAR"
         android:textColor="@color/white"
         android:textSize="17sp"
@@ -327,4 +417,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="reiniciar"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

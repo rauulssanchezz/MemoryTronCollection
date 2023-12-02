@@ -16,7 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 class FinalRaul : AppCompatActivity() {
     var mediaPlayer: MediaPlayer? = null
     var musica = true
-
+    var modo=""
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,10 +26,18 @@ class FinalRaul : AppCompatActivity() {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // Recupera las victorias y derrotas almacenadas en SharedPreferences
-        var victorias = sharedPreferences.getInt("victoriasRaul", 0)
-        var derrotas = sharedPreferences.getInt("derrotasRaul", 0)
+        var victoriasN=sharedPreferences.getInt("victoriasN", 0)
+        var derrotasN=sharedPreferences.getInt("derrotasN", 0)
+
+        var victoriasD=sharedPreferences.getInt("victoriasD", 0)
+        var derrotasD=sharedPreferences.getInt("derrotasD", 0)
+
+
+        var victorias =0
+        var derrotas =0
 
         var resultado = intent.getStringExtra("resultado").toString()
+        modo=intent.getStringExtra("modo").toString()
 
         var fondo = findViewById<ConstraintLayout>(R.id.background)
         var texto = findViewById<ImageView>(R.id.texto)
@@ -38,24 +46,52 @@ class FinalRaul : AppCompatActivity() {
         resultados.visibility = View.VISIBLE
 
         if (resultado.equals("Eres Admin")) {
-            fondo.setBackgroundResource(R.drawable.win_r)
-            texto.setImageResource(R.drawable.admintxt_r)
-            mediaPlayer = MediaPlayer.create(this, R.raw.ganador)
+            if (modo.equals("normal")) {
+                fondo.setBackgroundResource(R.drawable.win_r)
+                texto.setImageResource(R.drawable.admintxt_r)
+                mediaPlayer = MediaPlayer.create(this, R.raw.ganador)
+                victoriasN++
+            }else{
+                fondo.setBackgroundResource(R.drawable.victoria2)
+                texto.setImageResource(R.drawable.admintxt_r)
+                mediaPlayer = MediaPlayer.create(this, R.raw.ganador2_r)
+                victoriasD++
+            }
             mediaPlayer?.start()
-            victorias++
+            mediaPlayer?.isLooping=true
         } else {
-            fondo.setBackgroundResource(R.drawable.lose_r)
-            texto.setImageResource(R.drawable.cagastetxt_r)
-            mediaPlayer = MediaPlayer.create(this, R.raw.derrota)
+            if (modo.equals("normal")){
+                fondo.setBackgroundResource(R.drawable.lose_r)
+                texto.setImageResource(R.drawable.cagastetxt_r)
+                mediaPlayer = MediaPlayer.create(this, R.raw.derrota)
+                derrotasN++
+            }else{
+                fondo.setBackgroundResource(R.drawable.perdiste2)
+                texto.setImageResource(R.drawable.cagastetxt_r)
+                mediaPlayer = MediaPlayer.create(this, R.raw.derrota2_r)
+                derrotasD++
+            }
             mediaPlayer?.seekTo(5000)
             mediaPlayer?.setVolume(1.0F,1.0F)
             mediaPlayer?.start()
-            derrotas++
+            mediaPlayer?.isLooping=true
         }
-        with(sharedPreferences.edit()) {
-            putInt("victoriasRaul", victorias)
-            putInt("derrotasRaul", derrotas)
-            apply()
+        if (modo.equals("normal")) {
+            with(sharedPreferences.edit()) {
+                putInt("victoriasN", victoriasN)
+                putInt("derrotasN", derrotasN)
+                apply()
+            }
+            victorias=victoriasN
+            derrotas=derrotasN
+        }else{
+            with(sharedPreferences.edit()) {
+                putInt("victoriasD", victoriasD)
+                putInt("derrotasD", derrotasD)
+                apply()
+            }
+            victorias=victoriasD
+            derrotas=derrotasD
         }
         resultados.text = "Victorias Totales: $victorias\nDerrotas Totales: $derrotas"
 
@@ -82,13 +118,17 @@ class FinalRaul : AppCompatActivity() {
     }
     override fun onBackPressed() {
         mediaPlayer?.stop()
-        var intent= Intent(this,JuegoRaul::class.java)
+        var intent= Intent(this,InicioRaul::class.java)
         startActivity(intent)
         super.onBackPressed()
     }
 
     fun reiniciar(view: View) {
-        var intent=Intent(this,JuegoRaul::class.java)
+        if (modo.equals("normal")) {
+            intent = Intent(this, JuegoRaul::class.java)
+        }else{
+            intent = Intent(this, Juego2Raul::class.java)
+        }
         mediaPlayer?.stop()
         animacion(view,200,200)
         view.postDelayed({startActivity(intent)},400)
